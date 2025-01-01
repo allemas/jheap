@@ -1,0 +1,12 @@
+{
+  "type": "record",
+  "name": "Metric",
+  "namespace": "com.allemas.jheap.schema",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "source", "type": "string"},
+    {"name": "timestamp", "type": "long"},
+    {"name": "value", "type": ["null", "float"], "default": null},
+    {"name": "details", "type": ["null", "string"], "default": null}
+  ]
+}
