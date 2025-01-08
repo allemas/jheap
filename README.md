@@ -1,31 +1,46 @@
-# JHeap - A Lightweight JVM Heap Monitoring APM
 
-**JHeap** is a lightweight, open-source Application Performance Monitoring (APM) tool designed to dynamically connect to a running JVM and provide real-time insights into the heap memory usage. It allows developers and operators to monitor and diagnose memory-related issues without restarting the application.
+# **JHeap - Lightweight JVM Heap Monitoring APM**
+
+**JHeap** is an open-source Application Performance Monitoring (APM) tool designed to dynamically attach to a running JVM and provide real-time insights into heap memory usage. The tool specializes in heap management and garbage collection (GC) observability with minimal external dependencies. JHeap is lightweight, self-contained, and perfect for production environments where restarting the application is not an option.
 
 ---
 
-## Key Features
+## **Key Features**
 
-- **Dynamic JVM Attachment**: Seamlessly attach to a running JVM without requiring application restarts, leveraging the `com.sun.tools.attach` API.
-- **Heap Metrics Extraction**: Retrieve detailed information about heap usage, including:
+- **Dynamic JVM Attachment**:
+  - Seamlessly attach to a running JVM without requiring application restarts using the `com.sun.tools.attach` API.
+
+- **Heap Metrics Collection**:
+  - Retrieve detailed heap memory usage metrics, including:
     - Total heap memory
     - Used heap memory
     - Free heap memory
-    - Garbage collector statistics
-- **Local Metrics Storage**: Persist the metrics locally on the machine for later analysis using efficient file formats like Parquet.
-- **Customizable Sampling**: Define intervals and data points for metric collection to fit your performance needs.
-- **Simple Integration**: Minimal setup required for monitoring Java processes.
+    - Garbage collector (GC) statistics
+  
+- **Garbage Collector (GC) Monitoring**:
+  - Track minor and major GC cycles.
+  - Measure the time spent in GC and its impact on overall performance.
+  - Log GC events for later analysis.
+
+- **Local Metrics Storage**:
+  - Persist metrics locally on the machine for later analysis using efficient file formats like Parquet/Avro.
+  
+- **Customizable Sampling**:
+  - Define the sampling intervals and data points to collect, tailored to specific performance needs.
+
+- **Minimal External Dependencies**:
+  - JHeap is lightweight, requiring no external monitoring tools or infrastructure, making it ideal for production environments with minimal overhead.
 
 ---
 
-## Getting Started
+## **Getting Started**
 
-### Prerequisites
+### **Prerequisites**
 
 - **Java Development Kit (JDK)**: Version 8 or higher
 - **Maven** (optional, for building the project)
 
-### Installation
+### **Installation**
 
 1. Clone the repository:
    ```bash
@@ -43,25 +58,29 @@
    java -jar target/jheap-1.0.0.jar
    ```
 
-### Usage
+---
 
-1. **Identify Target JVM**:
-   Use the following command to list all running JVMs:
-   ```bash
-   jps -l
-   ```
-   Identify the process ID (PID) of the target JVM.
+## **Usage**
 
-2. **Attach to JVM**:
-   Run JHeap with the target PID:
-   ```bash
-   java -jar jheap-1.0.0.jar --pid=<TARGET_PID>
-   ```
+### **Identify Target JVM**:
+Use the following command to list all running JVMs:
+```bash
+jps -l
+```
+Identify the process ID (PID) of the target JVM.
 
-3. **Access Metrics**:
-   Metrics will be written to a file locally in Parquet format by default. You can customize the file path using command-line arguments.
+### **Attach to JVM**:
+Run JHeap with the target PID:
+```bash
+java -jar jheap-1.0.0.jar --pid=<TARGET_PID>
+```
 
-### Command-Line Options
+### **Access Metrics**:
+Metrics will be written to a file locally in Parquet/Avro format by default. You can customize the file path using command-line arguments.
+
+---
+
+## **Command-Line Options**
 
 | Option           | Description                             | Default Value  |
 |------------------|-----------------------------------------|----------------|
@@ -71,15 +90,15 @@
 
 ---
 
-## Example Metrics Output
+## **Metrics Output**
 
-The metrics will be stored in Parquet format, optimized for performance and structured queries. Use tools like Apache Arrow or Spark to read and analyze the files.
+The metrics will be stored in Parquet/Avro format, optimized for performance and structured queries. Use tools like Apache Arrow or Spark to read and analyze the files.
 
 ---
 
-## Roadmap
+## **Roadmap**
 
-- Simplify user experience with minimal setup.
+- Simplify the user experience with minimal setup.
 - Focus on providing a standalone JAR with robust, self-contained functionality.
 - Enhance heap analysis capabilities.
 - Introduce visualization tools in future versions.
@@ -88,7 +107,7 @@ The metrics will be stored in Parquet format, optimized for performance and stru
 
 ---
 
-## Contributing
+## **Contributing**
 
 We welcome contributions! To get started:
 
