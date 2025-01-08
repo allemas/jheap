@@ -22,7 +22,7 @@ public class Drain extends Thread {
                 if (storage.remainingCapacity() < 5) {
                     List<Metric> drainedElements = new ArrayList<>();
                     storage.drain(drainedElements);
-                    MetricWriter.writeToParquetFile(drainedElements, Metric.class);
+                    MetricWriter.writeToParquetFile(drainedElements);
                 }
                 Thread.sleep(Duration.ofSeconds(1));
             } catch (Exception e) {
